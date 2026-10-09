@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Xuân Trí – Trang web đang xây dựng</title>
+  <meta name="description" content="Website Mai Xuân Trí đang được xây dựng. Our website is under construction.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='18' width='38' height='24' rx='12' fill='%23fff' stroke='%2315803d' stroke-width='4'/%3E%3Cpath d='M44 24h8l8 10v10H44z' fill='%2315803d'/%3E%3Ccircle cx='16' cy='48' r='6' fill='%2314532d'/%3E%3Ccircle cx='50' cy='48' r='6' fill='%2314532d'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f2faf4;
+      --card: #ffffff;
+      --text: #12241a;
+      --muted: #56685d;
+      --primary: #15803d;
+      --primary-dark: #14532d;
+      --accent: #22c55e;
+      --line: #cfe9d8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .stripe {
+      height: 14px;
+      background: repeating-linear-gradient(-45deg, var(--primary) 0 18px, #ffffff 18px 36px);
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+    .card {
+      width: 100%;
+      max-width: 880px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(21, 128, 61, .10);
+      padding: 40px 32px;
+      text-align: center;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: .06em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .brand span { color: var(--primary-dark); }
+    .illustration { width: 100%; max-width: 560px; height: auto; margin: 0 auto 24px; display: block; }
+    h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    h2 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .lang {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+    .lang + .lang {
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .progress {
+      max-width: 420px;
+      margin: 28px auto 8px;
+      height: 10px;
+      border-radius: 99px;
+      background: var(--line);
+      overflow: hidden;
+    }
+    .progress > div {
+      height: 100%;
+      width: 40%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      animation: load 2.6s ease-in-out infinite alternate;
+    }
+    @keyframes load { from { width: 25%; } to { width: 75%; } }
+    .progress-label { font-size: .85rem; color: var(--muted); }
+    .contact {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--line);
+      font-size: .95rem;
+      color: var(--muted);
+    }
+    .contact strong { color: var(--text); }
+    footer {
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      padding: 16px;
+    }
+    /* Animations for the illustration */
+    .ship { animation: bob 3.2s ease-in-out infinite alternate; }
+    @keyframes bob { from { transform: translateY(0); } to { transform: translateY(4px); } }
+    .waves { animation: drift 4s linear infinite; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-40px); } }
+    .truck { animation: bump .6s ease-in-out infinite alternate; }
+    @keyframes bump { from { transform: translateY(0); } to { transform: translateY(-1.5px); } }
+    .road-line { animation: roll 1.2s linear infinite; }
+    @keyframes roll { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 48; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ship, .waves, .truck, .road-line, .progress > div { animation: none; }
+    }
+    @media (max-width: 480px) {
+      .card { padding: 28px 18px; border-radius: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="stripe" aria-hidden="true"></div>
+
+  <main>
+    <div class="card">
+      <div class="brand">Mai Xuân <span>Trí</span></div>
+
+      <!-- Illustration: oil tanker ship at sea + fuel tanker truck on the road -->
+      <svg class="illustration" viewBox="0 0 600 340" role="img" aria-label="Minh hoạ tàu dầu và xe bồn chở xăng dầu / Illustration of an oil tanker ship and a fuel tanker truck">
+        <defs>
+          <clipPath id="sea-clip"><rect x="0" y="182" width="600" height="72"/></clipPath>
+        </defs>
+
+        <!-- sun & clouds -->
+        <circle cx="90" cy="70" r="30" fill="#dcfce7"/>
+        <circle cx="90" cy="70" r="20" fill="#bbf7d0"/>
+        <g fill="#e8f5ec">
+          <ellipse cx="230" cy="58" rx="42" ry="14"/><ellipse cx="258" cy="48" rx="26" ry="14"/>
+          <ellipse cx="470" cy="80" rx="36" ry="12"/><ellipse cx="492" cy="71" rx="22" ry="12"/>
+        </g>
+
+        <!-- sea -->
+        <rect x="0" y="182" width="600" height="72" fill="#d1f2de"/>
+        <g clip-path="url(#sea-clip)">
+          <g class="waves" fill="none" stroke="#86d9a4" stroke-width="2.5" stroke-linecap="round">
+            <path d="M0 200 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
+            <path d="M-20 228 q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
+          </g>
+        </g>
+
+        <!-- oil tanker ship -->
+        <g class="ship">
+          <!-- superstructure (stern / right) -->
+          <rect x="488" y="128" width="50" height="48" rx="2" fill="#ffffff" stroke="#15803d" stroke-width="3"/>
+          <rect x="482" y="122" width="62" height="8" rx="2" fill="#15803d"/>
+          <g fill="#14532d">
+            <rect x="494" y="137" width="9" height="7" rx="1"/><rect x="508" y="137" width="9" height="7" rx="1"/><rect x="522" y="137" width="9" height="7" rx="1"/>
+            <rect x="494" y="152" width="9" height="7" rx="1"/><rect x="508" y="152" width="9" height="7" rx="1"/><rect x="522" y="152" width="9" height="7" rx="1"/>
+          </g>
+          <rect x="520" y="98" width="14" height="24" fill="#15803d"/>
+          <rect x="520" y="104" width="14" height="5" fill="#ffffff"/>
+          <line x1="506" y1="122" x2="506" y2="100" stroke="#14532d" stroke-width="2"/>
+          <!-- deck pipes & tanks -->
+          <g fill="#ffffff" stroke="#15803d" stroke-width="2.5">
+            <rect x="290" y="164" width="48" height="12" rx="6"/>
+            <rect x="346" y="164" width="48" height="12" rx="6"/>
+            <rect x="402" y="164" width="48" height="12" rx="6"/>
+          </g>
+          <line x1="280" y1="161" x2="470" y2="161" stroke="#14532d" stroke-width="2"/>
+          <line x1="372" y1="161" x2="372" y2="146" stroke="#14532d" stroke-width="2"/>
+          <line x1="364" y1="146" x2="380" y2="146" stroke="#14532d" stroke-width="2"/>
+          <!-- hull -->
+          <path d="M262 176 H566 L548 214 H284 Z" fill="#15803d"/>
+          <path d="M276 200 H556 L548 214 H284 Z" fill="#14532d"/>
+          <rect x="262" y="176" width="304" height="5" fill="#ffffff" opacity=".85"/>
+          <text x="405" y="196" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="2">MXT TANKER</text>
+          <circle cx="282" cy="186" r="3" fill="#ffffff"/>
+        </g>
+
+        <!-- shore / grass -->
+        <rect x="0" y="254" width="600" height="10" fill="#86efac"/>
+        <!-- road -->
+        <rect x="0" y="264" width="600" height="56" fill="#3f4a45"/>
+        <line class="road-line" x1="0" y1="292" x2="600" y2="292" stroke="#ffffff" stroke-width="3" stroke-dasharray="26 22"/>
+        <rect x="0" y="320" width="600" height="20" fill="#dcefe2"/>
+
+        <!-- fuel tanker truck -->
+        <g class="truck">
+          <rect x="52" y="282" width="290" height="10" rx="2" fill="#1f2a24"/>
+          <!-- tank -->
+          <rect x="56" y="222" width="214" height="60" rx="30" fill="#ffffff" stroke="#15803d" stroke-width="4"/>
+          <rect x="60" y="250" width="206" height="10" fill="#15803d"/>
+          <text x="163" y="244" font-size="14" font-weight="800" fill="#14532d" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="1">MAI XUÂN TRÍ</text>
+          <text x="163" y="276" font-size="9" font-weight="700" fill="#15803d" text-anchor="middle" font-family="Arial, sans-serif" letter-spacing="2">XĂNG DẦU · FUEL</text>
+          <rect x="150" y="215" width="26" height="8" rx="2" fill="#15803d"/>
+          <!-- cab -->
+          <path d="M276 236 H316 L342 262 V284 H276 Z" fill="#15803d"/>
+          <path d="M286 242 H312 L330 260 H286 Z" fill="#e6f7ec"/>
+          <rect x="296" y="266" width="12" height="3" rx="1" fill="#ffffff"/>
+          <rect x="336" y="270" width="8" height="6" rx="1" fill="#fde68a"/>
+          <!-- wheels -->
+          <g fill="#1f2a24">
+            <circle cx="92" cy="296" r="14"/><circle cx="128" cy="296" r="14"/>
+            <circle cx="230" cy="296" r="14"/><circle cx="314" cy="296" r="14"/>
+          </g>
+          <g fill="#d1d5db">
+            <circle cx="92" cy="296" r="5"/><circle cx="128" cy="296" r="5"/>
+            <circle cx="230" cy="296" r="5"/><circle cx="314" cy="296" r="5"/>
+          </g>
+        </g>
+
+        <!-- construction sign -->
+        <g transform="translate(432 216)">
+          <rect x="18" y="40" width="4" height="48" fill="#4b5563"/>
+          <polygon points="20,0 44,42 -4,42" fill="#ffffff" stroke="#15803d" stroke-width="4" stroke-linejoin="round"/>
+          <rect x="18" y="14" width="4" height="15" rx="1" fill="#14532d"/>
+          <circle cx="20" cy="35" r="2.5" fill="#14532d"/>
+        </g>
+
+        <!-- traffic cones -->
+        <g>
+          <polygon points="498,304 512,262 526,304" fill="#15803d"/>
+          <rect x="504" y="278" width="16" height="6" fill="#ffffff"/>
+          <rect x="492" y="302" width="40" height="6" rx="2" fill="#14532d"/>
+        </g>
+        <g>
+          <polygon points="550,304 564,262 578,304" fill="#15803d"/>
+          <rect x="556" y="278" width="16" height="6" fill="#ffffff"/>
+          <rect x="544" y="302" width="40" height="6" rx="2" fill="#14532d"/>
+        </g>
+      </svg>
+
+      <h1>Trang web đang được xây dựng</h1>
+      <h2>Our website is under construction</h2>
+
+      <p class="lang">
+        Cảm ơn Quý khách đã ghé thăm Mai Xuân Trí. Chúng tôi đang hoàn thiện website
+        để mang đến thông tin và dịch vụ tốt hơn. Vui lòng quay lại sau.
+      </p>
+      <p class="lang">
+        Thank you for visiting Mai Xuan Tri. We are working hard to bring you a better
+        website experience. Please check back soon.
+      </p>
+
+      <div class="progress" aria-hidden="true"><div></div></div>
+      <div class="progress-label">Đang hoàn thiện… / Coming soon…</div>
+
+      <div class="contact">
+        Mọi hoạt động kinh doanh vẫn diễn ra bình thường.<br>
+        <strong>Our business operations continue as usual.</strong>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="y">2026</span> Mai Xuân Trí · maixuantri.com
+  </footer>
+  <div class="stripe" aria-hidden="true"></div>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
